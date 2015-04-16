@@ -1,0 +1,25 @@
+a.new-record {
+    margin-top: 12px;
+}
+
+label {
+    font-weight: bolder;
+}
+
+form .trumbowyg-box {
+    width: 100%;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555555;
+    background-color: #ffffff;
+    background-image: none;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+form.delete-form {
+    display: inline-block;
+}

@@ -1,0 +1,23 @@
+{{partial "answer-menu"}}
+
+<section class="answer container">
+
+    <h1 class="listHeader standAlone">{{model.title}}</h1>
+
+    <div class="content">
+
+        {{{model.content}}}
+
+    </div>
+
+    <hr class="listDivider grey">
+
+    <div class="source">
+        Deze informatie is wel afkomstig uit: <b><a href="#">{{model.source}}</a></b>. Hier kun je nog meer vinden.
+    </div>
+
+</section>
+
+{{partial "suggestions"}}
+
+{{partial "footer"}}

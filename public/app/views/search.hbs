@@ -1,0 +1,83 @@
+{{partial "menu"}}
+
+<section id="searchHeader">
+
+    <section id="searchForm" class="container">
+
+        <form class="naturalLanguageForm special" {{action "specialSearchAnswers" on="submit"}} >
+
+            Ik ben een
+
+            <div class="inputWrapper">
+                {{input
+                type="text"
+                value=level}}
+            </div>
+
+            leerling, en ik ben opzoek naar informatie over
+
+            <div class="inputWrapper">
+                {{input
+                type="text"
+                value=subject}}
+            </div>
+
+            voor het vak
+
+            <div class="inputWrapper">
+                {{input
+                type="text"
+                value=class}}
+            </div>
+
+            voor de
+
+            <div class="inputWrapper">
+                {{input
+                type="text"
+                value=exam}}
+            </div>
+
+            examens.
+
+            <button class="button-primary button-action">Zoeken</button>
+
+        </form>
+
+        <form class="normalForm regular hidden" {{action "regularSearchAnswers" on="submit"}}>
+
+            {{input
+            placeholder="Wat is je vraag?"
+            type="text"
+            value=regularSearch}}
+
+            <button class="button-primary button-action">Zoeken</button>
+
+        </form>
+
+        <hr>
+
+        <p class="changeSearchBar">
+            <span {{action "switchSearchBar" "regular" on="click"}} class="special">of gebruik de normale zoekbar</span>
+            <span {{action "switchSearchBar" "special" on="click"}} class="regular hidden">of gebruik de speciale zoekbar</span>
+        </p>
+
+    </section>
+
+</section>
+
+<section class="searchResults container toTop">
+
+    <ul class="results-list">
+        {{#each answer in model}}
+
+            <li>{{ partial "answer" }}</li>
+
+        {{/each}}
+    </ul>
+
+</section>
+
+{{partial "suggestions"}}
+
+{{partial "footer"}}

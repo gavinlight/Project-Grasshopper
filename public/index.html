@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+        <title>Project Grasshopper</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+        <link href="/vendor/skeleton/css/normalize.css" rel="stylesheet">
+        <link href="/vendor/skeleton/css/skeleton.css" rel="stylesheet">
+        <link href="/css/app.css" rel="stylesheet">
+    </head>
+    <body>
+
+        <!-- Dependencies -->
+        <script src="vendor/jquery/dist/jquery.min.js"></script>
+        <!-- Ember.debug is only meant for debugging. Use ember.min in production TODO: Remove ember.debug -->
+        <script src="vendor/ember/ember.debug.js"></script>
+        <script src="vendor/ember/ember-template-compiler.js"></script>
+        <script src="vendor/ember-data/ember-data.min.js"></script>
+
+        <!-- Application files -->
+        <script src="app/application.js"></script>
+        <script src="app/router.js"></script>
+
+        <!-- Models -->
+        <script src="app/models/answer.js"></script>
+
+        <!-- Controllers -->
+        <script src="app/controllers/search_controller.js"></script>
+        <script src="app/controllers/answers_controller.js"></script>
+
+        <!-- Views -->
+        <script src="app/views/compiled_view.js"></script>
+
+        <!-- Livereload is only meant for debugging. Do not use in production TODO: Remove livereload -->
+        <script src="//localhost:35729/livereload.js"></script>
+
+    </body>
+</html>

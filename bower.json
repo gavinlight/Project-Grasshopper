@@ -1,0 +1,10 @@
+{
+    "name": "cast-nine",
+    "dependencies": {
+        "ember": "1.11.0",
+        "ember-data": "~1.0.0-beta.8",
+        "handlebars": "2.0.0",
+        "trumbowyg": null,
+        "skeleton": null
+    }
+}
