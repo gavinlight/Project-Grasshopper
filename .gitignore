@@ -16,3 +16,6 @@ composer.phar
 /node_modules
 /public/vendor
 /vendor
+
+.vagrant/
+Vagrantfile
