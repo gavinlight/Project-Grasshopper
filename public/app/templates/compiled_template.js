@@ -983,7 +983,7 @@ Ember.TEMPLATES["_menu"] = Ember.HTMLBars.template((function() {
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("li");
         var el2 = dom.createElement("a");
-        dom.setAttribute(el2,"class","login");
+        dom.setAttribute(el2,"class","login logout");
         var el3 = dom.createTextNode("Uitloggen");
         dom.appendChild(el2, el3);
         dom.appendChild(el1, el2);
