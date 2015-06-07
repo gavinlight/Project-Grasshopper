@@ -85,7 +85,7 @@ App.SearchController = Ember.Controller.extend({
                 // TODO: Animatie tonen (en verbergen) zoekresultaten
                 if(loadedAnswers){
                     that.set('searchResults', loadedAnswers);
-
+                    $('body').append('<div class="dialogWindow">Er is/zijn ' + loadedAnswers.length + ' resulat(en) gevonden <span class="closeDialog">X</span></div>');
                 } else {
                     that.set('searchResults', false);
                 }

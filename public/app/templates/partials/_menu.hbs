@@ -12,7 +12,7 @@
                     <li>{{#link-to 'search'}}Zoeken{{/link-to}}</li>
                     <!-- TODO: Stuur de gebruiker bij het bezoeken van deze pagina (via de footer) naar de inlog pagina -->
                     {{#if controllers.application.userIsLoggedIn}}
-                        <li>{{#link-to 'search'}}Mijn resultaten{{/link-to}}</li>
+                        <li>{{#link-to 'results'}}Mijn resultaten{{/link-to}}</li>
                     {{/if}}
 
                     <li>{{#link-to 'answers'}}Antwoorden{{/link-to}}</li>
@@ -32,13 +32,13 @@
                 <li>{{#link-to 'search'}}Zoeken{{/link-to}}</li>
 
                 {{#if controllers.application.userIsLoggedIn}}
-                    <li>{{#link-to 'search'}}Mijn resultaten{{/link-to}}</li>
+                    <li>{{#link-to 'results'}}Mijn resultaten{{/link-to}}</li>
                 {{/if}}
 
                 <li>{{#link-to 'answers'}}Antwoorden{{/link-to}}</li>
 
                 {{#if controllers.application.userIsLoggedIn}}
-                    <li><a class='login'{{action 'logout' target='controllers.application'}}>Uitloggen</a></li>
+                    <li><a class='login logout'{{action 'logout' target='controllers.application'}}>Uitloggen</a></li>
                 {{else}}
                     <li>{{#link-to 'login' class='login'}}Inloggen{{/link-to}}</li>
                 {{/if}}

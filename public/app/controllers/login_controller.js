@@ -23,6 +23,8 @@ App.LoginController = Ember.Controller.extend({
                 this.set('controllers.application.currentUser', jQuery.extend(this.get('userValues'), loginForm));
             }
 
+            $('body').append('<div class="dialogWindow">Je bent succesvol ingelogd <span class="closeDialog">X</span></div>');
+
             this.transitionToRoute('search');
         }
 

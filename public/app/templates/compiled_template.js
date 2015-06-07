@@ -929,7 +929,7 @@ Ember.TEMPLATES["_menu"] = Ember.HTMLBars.template((function() {
           fragment = this.build(dom);
         }
         var morph0 = dom.createMorphAt(dom.childAt(fragment, [1]),0,0);
-        block(env, morph0, context, "link-to", ["search"], {}, child0, null);
+        block(env, morph0, context, "link-to", ["results"], {}, child0, null);
         return fragment;
       }
     };
@@ -1211,7 +1211,7 @@ Ember.TEMPLATES["_menu"] = Ember.HTMLBars.template((function() {
           fragment = this.build(dom);
         }
         var morph0 = dom.createMorphAt(dom.childAt(fragment, [1]),0,0);
-        block(env, morph0, context, "link-to", ["search"], {}, child0, null);
+        block(env, morph0, context, "link-to", ["results"], {}, child0, null);
         return fragment;
       }
     };
@@ -1265,7 +1265,7 @@ Ember.TEMPLATES["_menu"] = Ember.HTMLBars.template((function() {
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("li");
         var el2 = dom.createElement("a");
-        dom.setAttribute(el2,"class","login");
+        dom.setAttribute(el2,"class","login logout");
         var el3 = dom.createTextNode("Uitloggen");
         dom.appendChild(el2, el3);
         dom.appendChild(el1, el2);
@@ -2101,6 +2101,12 @@ Ember.TEMPLATES["results"] = Ember.HTMLBars.template((function() {
       dom.appendChild(el1, el2);
       var el2 = dom.createTextNode(" ");
       dom.appendChild(el1, el2);
+      var el2 = dom.createElement("h2");
+      var el3 = dom.createTextNode("Je hebt bevindt je momenteel in de oranje categorie.");
+      dom.appendChild(el2, el3);
+      dom.appendChild(el1, el2);
+      var el2 = dom.createTextNode(" ");
+      dom.appendChild(el1, el2);
       var el2 = dom.createElement("div");
       dom.setAttribute(el2,"class","row result-indicator");
       var el3 = dom.createTextNode(" ");
@@ -2122,6 +2128,36 @@ Ember.TEMPLATES["results"] = Ember.HTMLBars.template((function() {
       var el3 = dom.createElement("div");
       dom.setAttribute(el3,"class","four columns result high");
       var el4 = dom.createTextNode(" ");
+      dom.appendChild(el3, el4);
+      dom.appendChild(el2, el3);
+      var el3 = dom.createTextNode(" ");
+      dom.appendChild(el2, el3);
+      dom.appendChild(el1, el2);
+      var el2 = dom.createTextNode(" ");
+      dom.appendChild(el1, el2);
+      var el2 = dom.createElement("p");
+      var el3 = dom.createTextNode("Dit betekend dat je:");
+      dom.appendChild(el2, el3);
+      dom.appendChild(el1, el2);
+      var el2 = dom.createTextNode(" ");
+      dom.appendChild(el1, el2);
+      var el2 = dom.createElement("ul");
+      var el3 = dom.createTextNode(" ");
+      dom.appendChild(el2, el3);
+      var el3 = dom.createElement("li");
+      var el4 = dom.createTextNode("Bij de volgende schoolexamens goed je best moet doen voor het vak engels.");
+      dom.appendChild(el3, el4);
+      dom.appendChild(el2, el3);
+      var el3 = dom.createTextNode(" ");
+      dom.appendChild(el2, el3);
+      var el3 = dom.createElement("li");
+      var el4 = dom.createTextNode("Voor het vak wiskunde a online oude examens moet maken.");
+      dom.appendChild(el3, el4);
+      dom.appendChild(el2, el3);
+      var el3 = dom.createTextNode(" ");
+      dom.appendChild(el2, el3);
+      var el3 = dom.createElement("li");
+      var el4 = dom.createTextNode("Je voor het vak geschiedenis tijdens de les veel aantekeningen moet maken.");
       dom.appendChild(el3, el4);
       dom.appendChild(el2, el3);
       var el3 = dom.createTextNode(" ");

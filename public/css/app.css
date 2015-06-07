@@ -223,6 +223,17 @@ input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focu
     display: inline;
 }
 
+#menu .mobile-menu ul li a.login.logout {
+    background-color: transparent;
+    color: #71D0D6;
+}
+
+#menu .mobile-menu ul li a.login.logout:hover {
+    background-color: #71D0D6;
+    color: white;
+}
+
+
 #menu .mobile-menu ul li:last-of-type {
     margin-bottom: 0;
 }
@@ -395,7 +406,7 @@ input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focu
         display: none;
     }
     #searchForm .inputWrapper .ember-view .recommendationsPopUp {
-        width: 100%;
+        width: 95%;
         left: 0;
         top: 65px;
         min-width: initial;
@@ -792,8 +803,29 @@ section.answer > .source > p, section.answer > .content > p {
     margin: 20px 0;
 }
 
+#resultsView > h1 {
+    text-align: center;
+    font-weight: 700;
+}
+
+#resultsView > h2 {
+    font-size: 20px;
+    text-align: center;
+}
+
+#resultsView > p {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+#resultsView > ul {
+    margin-left: 10px;
+}
+
 #resultsView .result-indicator .result {
-    background-color: red;
+    background-color: #F44336;
     height: 40px;
     margin-left: 0;
     width: 33.3333333334%;
@@ -805,13 +837,14 @@ section.answer > .source > p, section.answer > .content > p {
 }
 
 #resultsView .result-indicator .result.medium {
-    background-color: orange;
+    background-color: #FFA000;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
 
 #resultsView .result-indicator .result.high {
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-    background-color: green;
+    background-color: #43A047;
 }
 
 #footer {
@@ -864,4 +897,64 @@ section.answer > .source > p, section.answer > .content > p {
     #footer > .footer-links > ul > li.middle {
         display: none;
     }
+}
+
+/* Overlay */
+body {
+    position: relative;
+}
+
+body.overlay:after {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: rgba(0,0,0,0.5);
+    cursor: pointer;
+}
+
+body.overlay #searchForm .inputWrapper .recommendationsPopUp {
+    z-index: 4;
+}
+
+body.overlay #searchForm .inputWrapper .recommendationsPopUp:before {
+    content: 'X';
+    display: block;
+    position: absolute;
+    top: -30px;
+    right: -11px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@media (max-width: 768px){
+    body.overlay #searchForm .inputWrapper .recommendationsPopUp:before {
+        font-size: 30px;
+        top: -20px;
+        right: -10px;
+    }
+}
+
+/* Dialog window */
+.dialogWindow {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    background-color: #71D0D6;
+    border: 2px solid #6FBABE;
+    color: white;
+    padding: 5px 10px;
+}
+
+.dialogWindow > .closeDialog {
+    margin-left: 5px;
+    color: #6FBABE;
+    font-weight: 900;
+    position: relative;
+    top: 1px;
+    cursor: pointer;
 }

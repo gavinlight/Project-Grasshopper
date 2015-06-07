@@ -66,14 +66,25 @@ App.RecommendationsView = Ember.View.extend({
 
     openPopUp: function(){
         this.$('.recommendationsPopUp').fadeIn(500);
+        this.setBodyClass();
     },
 
     closePopUp: function(){
+        this.removeBodyClass();
         this.$('.recommendationsPopUp').fadeOut(500);
     },
 
     closeAllPopUps: function(){
+        this.removeBodyClass();
         $('.recommendationsPopUp').fadeOut(500);
+    },
+
+    setBodyClass: function(){
+        $('body').addClass('overlay');
+    },
+
+    removeBodyClass: function(){
+        $('body').removeClass('overlay');
     },
 
     keyDown: function(e){
