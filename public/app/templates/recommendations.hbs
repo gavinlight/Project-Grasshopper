@@ -1,0 +1,33 @@
+<div class="inputKeywordWrapper"{{action "loadRecommendations" on="click" target="view"}}>
+    {{input
+    type="text"
+    class="inputKeyword"
+    size=5
+    value=view.inputValue}}
+</div>
+
+<div class="recommendationsPopUp">
+
+    {{#if view.recommendations}}
+
+        <ul class="recommendationsList">
+
+            {{#each recommendation in view.recommendations}}
+
+                <li{{action 'chooseRecommendation' recommendation on='click' target="view"}}>
+                    {{recommendation.recommendationText}}
+                </li>
+
+            {{/each}}
+
+            <li {{action 'noRecommendation' on='click' target="view"}}>Ik weet het niet</li>
+
+            <li class="freeRecommendation">
+                <input type="text" placeholder="Anders, namelijk.." />
+            </li>
+
+        </ul>
+
+    {{/if}}
+
+</div>

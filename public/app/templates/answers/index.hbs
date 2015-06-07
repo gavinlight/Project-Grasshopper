@@ -1,0 +1,18 @@
+{{partial "menu"}}
+
+<section class="searchResults container">
+
+    <h1 class="listHeader standAlone">Antwoorden</h1>
+
+    <ul class="results-list">
+
+        {{#each answer in model.answers}}
+
+            <li>{{ partial "answer" }}</li>
+
+        {{/each}}
+
+    </ul>
+</section>
+
+{{partial "footer"}}

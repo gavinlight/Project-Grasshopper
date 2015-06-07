@@ -31,6 +31,7 @@ body, html, .ember-view, .fullScreen {
     padding: 10px 30px;
     text-transform: capitalize;
     font-weight: 200;
+    transition: 0.3s all;
 }
 
 .button-primary.button-action:hover {
@@ -60,21 +61,82 @@ input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focu
     z-index: 2;
     left: 0;
     padding: 10px 0;
+    background-color: white;
+    color: #737373;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
 
-#menu, #searchHeader {
+#menu > .container {
+    max-width: 95%;
+    width: 95%;
+}
+
+#searchHeader {
     background-size: cover;
     background-attachment: fixed;
-    background-image: linear-gradient(to bottom, rgba(113, 208, 214, 0.5), rgba(108, 157, 227, 0.5)), url('../img/menu.jpg');
-    background-image: -moz-linear-gradient(top, rgba(113, 208, 214, 0.5), rgba(108, 157, 227, 0.5)), url('../img/menu.jpg');
-    background-image: -o-linear-gradient(top, rgba(113, 208, 214, 0.5), rgba(108, 157, 227, 0.5)), url('../img/menu.jpg');
-    background-image: -ms-linear-gradient(top, rgba(113, 208, 214, 0.5), rgba(108, 157, 227, 0.5)), url('../img/menu.jpg');
-    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(113, 208, 214, 0.5)), to(rgba(108, 157, 227, 0.5))), url('../img/menu.jpg');
-    background-image: -webkit-linear-gradient(top, rgba(113, 208, 214, 0.5), rgba(108, 157, 227, 0.5)), url('../img/menu.jpg');
+    background-image: linear-gradient(to bottom, rgba(113, 208, 214, 0.5), rgba(108, 157, 227, 0.5)), url('../img/background.jpg');
+    background-image: -moz-linear-gradient(top, rgba(113, 208, 214, 0.5), rgba(108, 157, 227, 0.5)), url('../img/background.jpg');
+    background-image: -o-linear-gradient(top, rgba(113, 208, 214, 0.5), rgba(108, 157, 227, 0.5)), url('../img/background.jpg');
+    background-image: -ms-linear-gradient(top, rgba(113, 208, 214, 0.5), rgba(108, 157, 227, 0.5)), url('../img/background.jpg');
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(113, 208, 214, 0.5)), to(rgba(108, 157, 227, 0.5))), url('../img/background.jpg');
+    background-image: -webkit-linear-gradient(top, rgba(113, 208, 214, 0.5), rgba(108, 157, 227, 0.5)), url('../img/background.jpg');
+}
+
+#searchHeader.alternativeHeader {
+    background-image: linear-gradient(to bottom, rgba(113, 208, 214, 0.5), rgba(108, 157, 227, 0.5)), url('../img/background-2.jpg');
+    background-image: -moz-linear-gradient(top, rgba(113, 208, 214, 0.5), rgba(108, 157, 227, 0.5)), url('../img/background-2.jpg');
+    background-image: -o-linear-gradient(top, rgba(113, 208, 214, 0.5), rgba(108, 157, 227, 0.5)), url('../img/background-2.jpg');
+    background-image: -ms-linear-gradient(top, rgba(113, 208, 214, 0.5), rgba(108, 157, 227, 0.5)), url('../img/background-2.jpg');
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(113, 208, 214, 0.5)), to(rgba(108, 157, 227, 0.5))), url('../img/background-2.jpg');
+    background-image: -webkit-linear-gradient(top, rgba(113, 208, 214, 0.5), rgba(108, 157, 227, 0.5)), url('../img/background-2.jpg');
+    margin-top: 57px;
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 4px #737373;
+}
+
+#searchHeader.alternativeHeader h1.listHeader.standAlone {
+    display: inline-block;
+    font-size: 4em;
+    color: white;
+    margin: 85px 0 20px;
+    font-weight: 700;
+}
+
+#searchHeader.alternativeHeader .source {
+    margin-bottom: 60px;
+}
+
+#searchHeader.alternativeHeader .source a {
+    color: white;
+    font-weight: 700;
+}
+
+@media (max-width: 768px){
+    #searchHeader.alternativeHeader h1.listHeader.standAlone {
+        font-size: 2em;
+        margin-top: 45px;
+    }
+    #searchHeader.alternativeHeader .source {
+        margin-bottom: 40px;
+    }
+}
+
+.ember-view > .container.answer {
+    margin-top: 40px;
+}
+
+#menu .pages {
+    float: right;
 }
 
 #menu ul {
     margin: 0;
+    float: right;
+}
+
+#menu:after {
+    clear: both;
 }
 
 #menu ul li {
@@ -82,37 +144,126 @@ input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focu
     margin: 0;
 }
 
+#menu ul li:last-of-type a {
+    margin-right: 0;
+}
+
 #menu a {
-    color: white;
+    color: #737373;
     text-decoration: none;
     font-size: 1.5em;
     margin-right: 40px;
     font-weight: 200;
 }
 
-#menu a.account {
+#menu a.logo {
+    font-weight: 700;
+    font-style: italic;
     margin-right: 0;
+    width: auto;
 }
 
-#menu a.account > img {
-    float: right;
+#menu a.login {
+    background-color: #71D0D6;
+    padding: 5px 15px;
+    color: white;
+    border-radius: 4px;
+    border: 2px solid #71D0D6;
+    transition: 0.3s all;
+    font-size: 1.3em;
+    cursor: pointer;
+}
+
+#menu a.login:hover {
+    background-color: transparent;
+    color: #71D0D6;
+}
+
+#menu a.login:focus {
+    background-color: #6FBABE;
+    border-color: #6FBABE;
+    color: white;
+}
+
+#menu .hamburger {
+    width: 20px;
+    height: 20px;
+    display: none;
+    margin: 0 15px 0 10px;
+    background-size: 20px 20px;
+    background-image: url('../img/menu.svg');
+    cursor: pointer;
+    position: relative;
+    top: 2px;
 }
 
 #menu .mobile-menu {
     display: none;
 }
 
-@media (max-width: 554px){
-    #menu .desktop-menu {
+#menu .mobile-menu ul {
+    float: none;
+    margin: 10px 0 0;
+}
+
+#menu .mobile-menu ul li {
+    display: block;
+    padding: 5px 0;
+    font-size: 0.8em;
+    transition: 0.3s all;
+}
+
+#menu .mobile-menu ul li a {
+    display: block;
+    width: 95%;
+    margin: 0 auto;
+}
+
+#menu .mobile-menu ul li a.login {
+    display: inline;
+}
+
+#menu .mobile-menu ul li:last-of-type {
+    margin-bottom: 0;
+}
+
+#menu .mobile-menu ul li:hover {
+    background-color: #f5f5f5;
+}
+
+#menu .mobile-menu ul li:hover a {
+    text-decoration: underline;
+}
+
+#menu .mobile-menu ul li:hover a.login {
+    text-decoration: none;
+}
+
+@media (min-width: 768px){
+    #menu .mobile-menu {
+        display: none !important;
+    }
+}
+
+@media (max-width: 768px){
+    #menu .brand {
+        width: 95%;
+        float: none;
+        margin: 0 auto;
+        display: block;
+    }
+    #menu .hamburger {
+        display: inline-block;
+    }
+    #menu .pages {
         display: none;
     }
-    #menu .mobile-menu {
-        display: block;
+    #menu .container {
+        width: 100%;
+        max-width: 100%;
     }
-
-    #menu .mobile-menu ul li {
-        display: block;
-        padding: 5px;
+    #menu .mobile-menu ul li a {
+        margin-left: 20px;
     }
 }
 
@@ -121,21 +272,24 @@ input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focu
     font-weight: 300;
 }
 
-#searchHeader #menu {
-    padding: 10px 0;
-    background: none;
+#searchHeader .searchHelpers > p {
+    font-weight: 200;
+    font-size: 0.7em;
+    margin-bottom: 0;
 }
 
 #searchForm {
     padding: 20px 0;
     color: white;
     font-size: 2em;
+    text-shadow: 2px 2px 4px #737373;
 }
 
 #searchForm form {
-    padding: 100px 0 10px;
+    padding: 10px 0;
     font-weight: 300;
     line-height: 60px;
+    margin: 100px 0 0;
 }
 
 #searchForm form button {
@@ -144,31 +298,221 @@ input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focu
 
 #searchForm .inputWrapper {
     display: inline-block;
+    position: relative;
+}
+
+#searchForm .inputWrapper input:hover {
+    cursor: pointer;
+}
+
+#searchForm .naturalLanguageForm .inputWrapper:after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 21px;
+    top: 29px;
+    width: 16px;
+    height: 10px;
+    background-size: 16px 10px;
+    background-image: url('../img/arrow-blue.svg');
+    cursor: pointer;
 }
 
 #searchForm .inputWrapper input[type="text"] {
     background-color: transparent;
     border: none;
-    border-bottom: 2px solid #71D0D6;
+    border-bottom: 1px solid #71D0D6;
     height: auto;
     border-radius: 0;
     margin: 0 15px;
-    padding: 3px 8px;
+    padding: 3px 28px 3px 8px;
     color: white;
-    max-width: 200px;
+    width: auto;
     font-weight: 700;
+    text-shadow: 2px 2px 4px #737373;
+    transition: 0.3s all;
 }
 
-#searchForm hr {
-    width: 50px;
-    margin: 0 auto 20px;
-    border-top: 2px solid white;
+#searchForm .inputWrapper input[type="text"]:focus, #searchForm .inputWrapper input[type="text"]:active {
+    border-bottom-width: 2px;
+}
+
+@media (max-width: 900px){
+    #menu a {
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 768px){
+    #searchForm form {
+        font-size: 0.6em;
+        line-height: 35px;
+        margin-top: 75px;
+        text-align: center;
+        padding-bottom: 0;
+    }
+    /*#searchForm .inputWrapper input[type="text"] {*/
+        /*width: 90px;*/
+    /*}*/
+    #searchForm .naturalLanguageForm .inputWrapper:after {
+        top: 14px;
+    }
+    #searchForm form button {
+        margin: 30px auto 10px;
+        font-size: 15px;
+        padding: 7px 25px;
+    }
+    #searchForm p.changeSearchBar {
+        font-size: 0.8em;
+        margin-bottom: 0;
+    }
+    #searchForm p.changeSearchBar span:hover {
+        border-bottom-width: 1px;
+    }
+    #searchForm form.normalForm input[type="text"].regularSearch {
+        padding: 20px 10px;
+        width: 100%;
+    }
+    #searchForm .inputWrapper {
+        position: static;
+    }
+    #searchForm .naturalLanguageForm .inputWrapper > .ember-view > .inputKeywordWrapper {
+        position: relative;
+    }
+    #searchForm .naturalLanguageForm .inputWrapper > .ember-view > .inputKeywordWrapper:after {
+        content: '';
+        display: block;
+        position: absolute;
+        right: 21px;
+        top: 13px;
+        width: 16px;
+        height: 10px;
+        background-size: 16px 10px;
+        background-image: url('../img/arrow-blue.svg');
+        cursor: pointer;
+    }
+    #searchForm .naturalLanguageForm .inputWrapper:after {
+        display: none;
+    }
+    #searchForm .inputWrapper .ember-view .recommendationsPopUp {
+        width: 100%;
+        left: 0;
+        top: 65px;
+        min-width: initial;
+        padding: 0;
+    }
+    #searchForm .inputWrapper .ember-view .recommendationsPopUp .recommendationsList li {
+        font-size: 1em;
+        text-align: left;
+        padding: 0 10px;
+        line-height: 35px;
+    }
+    #searchForm .inputWrapper .ember-view .recommendationsPopUp .recommendationsList li.freeRecommendation {
+        padding-right: 10px;
+    }
+    #searchForm .inputWrapper .ember-view .recommendationsPopUp .recommendationsList li:after {
+        right: 10px;
+        top: 13px;
+    }
+    #searchForm .inputWrapper .ember-view .recommendationsPopUp .recommendationsList li:hover:after {
+        right: 14px;
+    }
+}
+
+/* Recommendations Pop Up */
+#searchForm .inputWrapper .recommendationsPopUp {
+    display: none;
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    min-width: 220px;
+    width: auto;
+    background-color: #71D0D6;
+    border: 3px solid #6FBABE;
+    color: white;
+    padding: 10px 0;
+    text-shadow: none;
+    z-index: 1;
+}
+
+#searchForm .inputWrapper .recommendationsPopUp .recommendationsList {
+    list-style: none;
+    margin: 0;
+}
+
+#searchForm .inputWrapper .recommendationsPopUp .recommendationsList li {
+    cursor: pointer;
+    margin: 0;
+    padding: 0 40px 0 20px;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    font-size: 0.7em;
+    line-height: 40px;
+    position: relative;
+    transition: 0.3s all;
+}
+
+#searchForm .inputWrapper .recommendationsPopUp .recommendationsList li:hover {
+    background-color: #6FBABE;
+}
+
+#searchForm .inputWrapper .recommendationsPopUp .recommendationsList li:after {
+    content: '';
+    width: 16px;
+    height: 10px;
+    background-size: 16px 10px;
+    background-image: url('../img/arrow-white.svg');
+    -webkit-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    transform: rotate(270deg);
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    transition: 0.3s all;
+}
+
+#searchForm .inputWrapper .recommendationsPopUp .recommendationsList li:hover:after {
+    right: 24px;
+}
+
+#searchForm .inputWrapper .recommendationsPopUp .recommendationsList li.freeRecommendation {
+    cursor: auto;
+    padding-right: 20px;
+}
+
+#searchForm .inputWrapper .recommendationsPopUp .recommendationsList li.freeRecommendation form {
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+}
+
+#searchForm .inputWrapper .recommendationsPopUp .recommendationsList li.freeRecommendation:after {
+    display: none;
+}
+
+#searchForm .inputWrapper .recommendationsPopUp .recommendationsList li.freeRecommendation input[type="text"] {
+    margin: 5px 0;
+    background-color: white;
+    border: 1px solid #e5e5e5;
+    padding: 5px 10px;
+    color: #737373;
+    font-weight: 300;
+    width: 100%;
+    max-width: 100%;
+    text-shadow: none;
+}
+
+@media (max-width: 768px){
+    #searchForm .inputWrapper {}
 }
 
 #searchForm .changeSearchBar {
     text-align: center;
     display: block;
     font-size: 1.2em;
+    text-shadow: 1px 1px 2px #737373;
 }
 
 #searchForm .changeSearchBar span {
@@ -206,7 +550,13 @@ input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focu
 }
 
 .searchResults ul {
-    margin: 20px auto;
+    margin: 5px auto 20px;
+}
+
+.searchResults ul:after {
+    content: '';
+    display: table;
+    clear: both;
 }
 
 .searchResults ul li {
@@ -226,10 +576,10 @@ input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focu
 }
 
 .card {
-    background-color: #f5f5f5;
+    background-color: white;
     margin: 20px 0;
     overflow: hidden;
-    border-radius: 7px;
+    border-radius: 5px;
     box-shadow: 0 1px 2px rgba(0,0,0,0.15);
 }
 
@@ -241,10 +591,12 @@ input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focu
     font-size: 2em;
     margin: 0;
     border-bottom: 2px solid #6FBABE;
+    font-weight: 200;
+    text-align: center;
 }
 
 .card > .content {
-    padding: 10px 20px;
+    padding: 10px 20px 20px;
     font-weight: 200;
 }
 
@@ -255,14 +607,106 @@ input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focu
 .card > a {
     display: block;
     color: #737373;
+    padding: 0px 20px;
+    transition: 0.3s all;
+}
+
+.card > a:hover {
+    background-color: rgba(0,0,0,0.05);
 }
 
 .card > a > span {
-    background-color: #e5e5e5;
     display: inline-block;
-    padding: 5px 15px;
-    float: right;
-    border-top-left-radius: 7px;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid rgba(0,0,0,0.15);
+}
+
+.card > a > span:after {
+    content: '';
+    display: inline-block;
+    right: 21px;
+    top: 29px;
+    width: 16px;
+    height: 10px;
+    background-size: 16px 10px;
+    background-image: url('../img/arrow-black.svg');
+    cursor: pointer;
+    margin-left: 5px;
+    transform: rotateZ(270deg);
+}
+
+.card.alternative.no-image {
+    background-color: #71D0D6;
+    color: white;
+}
+
+.card.alternative.no-image > h1 {
+    border: none;
+    background-color: #6FBABE;
+}
+
+.card.alternative.no-image > .content > p {
+    margin-bottom: 15px;
+}
+
+.card.alternative > .content > a {
+    background-color: white;
+    border: 2px solid white;
+    display: block;
+    margin: 0 auto;
+    font-size: 21px;
+    height: auto;
+    line-height: 0.7em;
+    padding: 10px 30px;
+    font-weight: 200;
+    transition: 0.3s all;
+    color: #71D0D6;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 4px;
+    width: auto;
+    max-width: 100px;
+    text-shadow: none;
+}
+
+.card.alternative > .content > a:hover {
+    background-color: transparent;
+    color: white;
+}
+
+.card.alternative > .content > a:focus {
+    background-color: #6FBABE;
+    border-color: #6FBABE;
+    color: white;
+}
+
+.card.alternative.image {
+    background-size: cover;
+    background-image: linear-gradient(to bottom, rgba(113, 208, 214, 0.5), rgba(108, 157, 227, 0.5)), url('../img/exam-contact-bg.jpg');
+    background-image: -moz-linear-gradient(top, rgba(113, 208, 214, 0.5), rgba(108, 157, 227, 0.5)), url('../img/exam-contact-bg.jpg');
+    background-image: -o-linear-gradient(top, rgba(113, 208, 214, 0.5), rgba(108, 157, 227, 0.5)), url('../img/exam-contact-bg.jpg');
+    background-image: -ms-linear-gradient(top, rgba(113, 208, 214, 0.5), rgba(108, 157, 227, 0.5)), url('../img/exam-contact-bg.jpg');
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(113, 208, 214, 0.5)), to(rgba(108, 157, 227, 0.5))), url('../img/exam-contact-bg.jpg');
+    background-image: -webkit-linear-gradient(top, rgba(113, 208, 214, 0.5), rgba(108, 157, 227, 0.5)), url('../img/exam-contact-bg.jpg');
+    color: white;
+    text-shadow: rgb(115, 115, 115) 2px 2px 4px;
+}
+
+.card.alternative.image > h1 {
+    background: none;
+    border: none;
+}
+
+.card.alternative.image > .content > a {
+    max-width: 160px;
+}
+
+@media (max-width: 768px){
+    .card {
+        margin-bottom: 0;
+    }
 }
 
 hr.listDivider {
@@ -277,14 +721,20 @@ hr.listDivider.grey {
 
 h1.listHeader {
     text-align: center;
+    font-size: 2em;
+    font-weight: 400;
+    margin-bottom: 0;
 }
 
-h1.listHeader.standAlone {
-    margin-top: 30px;
+h2.listSubHeader {
+    font-size: 1.2em;
+    text-align: center;
+    font-weight: 200;
+    margin-bottom: 0;
 }
 
 section.answer > .content {
-    margin: 50px 0;
+    margin: 20px 0 50px 0;
 }
 
 section.answer > .source {
@@ -295,6 +745,11 @@ section.answer > .source {
 section.answer > .source a {
     color: #71D0D6;
     text-decoration: none;
+}
+
+section.answer > .source > p, section.answer > .content > p {
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 @media (max-width: 678px){
@@ -328,4 +783,85 @@ section.answer > .source a {
 
 #loginForm form input, #loginForm form button {
     width: 100%;
+}
+
+#loginForm form > a {
+    text-align: center;
+    color: white;
+    display: block;
+    margin: 20px 0;
+}
+
+#resultsView .result-indicator .result {
+    background-color: red;
+    height: 40px;
+    margin-left: 0;
+    width: 33.3333333334%;
+}
+
+#resultsView .result-indicator .result.low {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+#resultsView .result-indicator .result.medium {
+    background-color: orange;
+}
+
+#resultsView .result-indicator .result.high {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: green;
+}
+
+#footer {
+    background-color: white;
+    margin: 30px auto 0;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+#footer > .footer-icon-container {
+    display: inline-block;
+    padding: 20px;
+    border-radius: 50%;
+    background-color: white;
+    width: 75px;
+    height: 75px;
+    margin-top: -30px;
+}
+
+#footer > .footer-links {
+    margin-top: -55px;
+}
+
+#footer > .footer-links > ul {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+#footer > .footer-links > ul > li a {
+    color: #737373;
+    font-weight: 200;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+#footer > .footer-links > ul > li a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 550px){
+    #footer {
+        padding-bottom: 0;
+    }
+    #footer > .footer-links {
+        margin-top: 0;
+    }
+    #footer > .footer-links > ul {
+        margin-bottom: 20px;
+    }
+    #footer > .footer-links > ul > li.middle {
+        display: none;
+    }
 }

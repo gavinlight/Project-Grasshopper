@@ -1,0 +1,120 @@
+{{partial "menu"}}
+
+<section id="searchHeader">
+
+    <section id="searchForm" class="container">
+
+        <form class="naturalLanguageForm special" {{action "specialSearchAnswers" on="submit"}} >
+
+            Ik ben een
+
+            <div class="inputWrapper">
+
+                {{view 'recommendations' type='level' inputValue=controllers.application.currentUser.level}}
+
+            </div>
+
+            leerling, en ik ben opzoek naar informatie over
+
+            <div class="inputWrapper">
+
+                {{view 'recommendations' type='subject' inputValue=subject}}
+
+            </div>
+
+            voor het vak
+
+            <div class="inputWrapper">
+
+                {{view 'recommendations' type='class' inputValue=controllers.application.getLowestGradeClass}}
+
+            </div>
+
+            voor de
+
+            <div class="inputWrapper">
+
+                {{view 'recommendations' type='exam' inputValue=controllers.application.currentPeriod}}
+
+            </div>
+
+            examens.
+
+            <button class="button-primary button-action">Zoeken</button>
+
+        </form>
+
+        <form class="normalForm regular hidden" {{action "regularSearchAnswers" on="submit"}}>
+
+            {{input
+            placeholder="Wat is je vraag?"
+            type="text"
+            class="regularSearch"
+            value=regularSearch}}
+
+            <button class="button-primary button-action">Zoeken</button>
+
+        </form>
+
+        <p class="changeSearchBar">
+            <span {{action "switchSearchBar" "regular" on="click"}} class="special">of gebruik de normale zoekbar</span>
+            <span {{action "switchSearchBar" "special" on="click"}} class="regular hidden">of gebruik de speciale zoekbar</span>
+        </p>
+
+    </section>
+
+</section>
+
+<section class="searchResults container toTop">
+
+    {{#if searchResults}}
+
+        <hr class="listDivider">
+        <h1 class="listHeader">Zoekresultaten</h1>
+
+        <ul class="results-list">
+            {{#each answer in searchResults}}
+
+                <li>{{ partial "answer" }}</li>
+
+            {{/each}}
+
+            {{#unless controllers.application.userIsLoggedIn}}
+                <li>
+                    <div class="card alternative no-image">
+                        <h1>Gebruik je schoolaccount</h1>
+
+                        <div class="content">
+
+                            <p>Door in te loggen met je schoolaccount kun je de applicatie efficiënter en sneller gebruiken. De applicatie past zich aan op jouw situatie, en geeft je inzicht op deze situatie.</p>
+
+                            {{#link-to 'login'}}<span>Log nu in</span>{{/link-to}}
+
+                        </div>
+                    </div>
+                </li>
+            {{/unless}}
+
+            <li>
+                <div class="card alternative image">
+                    <h1>Het examensecretariaat</h1>
+
+                    <div class="content">
+
+                        <p>Het examensecretariaat kan je verder helpen bij specifieke en persoonlijke vragen over de examens. Mocht je hier niet jouw antwoord gevonden hebben, dan kun je het beste naar het examensecretariaat gaan.</p>
+
+                       <a href="mailto:test@ja.nl"><span>Neem contact op</span></a>
+
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+
+    {{/if}}
+
+</section>
+
+{{partial "suggestions"}}
+
+{{partial "footer"}}

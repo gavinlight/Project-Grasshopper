@@ -1,4 +1,5 @@
 App.Answer = DS.Model.extend({
+
     title: DS.attr('string'),
     content: DS.attr('string'),
     source: DS.attr('string'),
@@ -9,8 +10,9 @@ App.Answer = DS.Model.extend({
     }.property('title'),
 
     sourceOrigin: function(){
-
-    },
+        var sourceArray = this.get('source').split('/');
+        return sourceArray[0] + '//' + sourceArray[2];
+    }.property('source'),
 
     keywordsArray: function(){
         return this.get('keywords').split(', ');
@@ -21,11 +23,22 @@ App.Answer = DS.Model.extend({
 
         if(jQuery(content).text().length > 200){
             var truncatedContent = this.truncate(content, 0, 200);
-            return truncatedContent + ' ...';
+            return truncatedContent + '...';
         } else {
             return content;
         }
     }.property('content'),
+
+    titleSummary: function(){
+        var title = this.get('title');
+
+        if(title.length > 30){
+            var truncatedTitle = this.truncate(title, 0, 30);
+            return truncatedTitle + '...';
+        } else {
+            return title;
+        }
+    }.property('title'),
 
     truncate: function(str, start, length){
         var countTags = 0;
@@ -52,7 +65,7 @@ App.Answer.reopenClass({
         var relevantAnswers = [];
         var that = this;
 
-        return that.store.findAll('answer').then(function(answers){
+        return this.store.findAll('answer').then(function(answers){
 
             answers.forEach(function(answer){
                 var answerKeywords = answer.get('keywordsArray');

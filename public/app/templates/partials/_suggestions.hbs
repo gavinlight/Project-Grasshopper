@@ -1,0 +1,52 @@
+<section class="searchResults container toTop">
+
+    <hr class="listDivider">
+
+    {{#if controllers.application.showSimilarAnswers}}
+
+        <h1 class="listHeader">Bedoelde je dit?</h1>
+        <h2 class="listSubHeader">Gebaseerd op soortgelijke antwoorden</h2>
+
+        <ul class="results-list">
+
+            {{#each answer in model.suggestions}}
+
+                <li>{{ partial "answer" }}</li>
+
+            {{/each}}
+
+        </ul>
+
+    {{/if}}
+
+    {{#if controllers.application.userIsLoggedIn}}
+
+        <h1 class="listHeader">Suggesties voor jou</h1>
+        <h2 class="listSubHeader">Gebaseerd op jouw recente schoolresultaten</h2>
+
+        <ul class="results-list">
+
+            {{#each answer in model.suggestions}}
+
+                <li>{{ partial "answer" }}</li>
+
+            {{/each}}
+
+        </ul>
+
+    {{/if}}
+
+    <h1 class="listHeader">Suggesties voor nu</h1>
+    <h2 class="listSubHeader">Gebaseerd op de huidige examenperiode</h2>
+
+    <ul class="results-list">
+
+        {{#each answer in model.suggestions}}
+
+            <li>{{ partial "answer" }}</li>
+
+        {{/each}}
+
+    </ul>
+
+</section>

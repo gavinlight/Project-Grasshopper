@@ -1,0 +1,27 @@
+{{partial "menu"}}
+
+<section id="searchHeader" class="answer alternativeHeader">
+
+    <div class="container">
+
+        <h1 class="listHeader standAlone">{{model.answer.title}}</h1>
+
+        <div class="source">
+            <p>Deze informatie is afkomstig uit: <b><a target="_blank" href="{{model.answer.source}}">{{model.answer.sourceOrigin}}</a></b> <br> Hier kun je nog meer vinden.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="container answer">
+    <div class="content">
+
+        {{{model.answer.content}}}
+
+    </div>
+</section>
+
+{{partial "suggestions"}}
+
+{{partial "footer"}}

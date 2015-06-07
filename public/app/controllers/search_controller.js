@@ -1,6 +1,6 @@
-App.SearchController = Ember.ArrayController.extend({
+App.SearchController = Ember.Controller.extend({
     /* Dependencies */
-    needs: ['answers'],
+    needs: ['answers', 'application'],
 
     /* Values */
     keywordsArray: [],
@@ -9,43 +9,13 @@ App.SearchController = Ember.ArrayController.extend({
     actions: {
 
         specialSearchAnswers: function(){
-            var formData = this.getProperties('level', 'subject', 'class', 'exam');
-            this.keywordsArray = Object.keys(formData).map(function (key) {return formData[key]});
-
-            if(this.formIsComplete()){
-                var relevantAnswers =  App.Answer.findRelevantAnswers(this.keywordsArray);
-                var that = this;
-
-                relevantAnswers.then(function(loadedAnswers){
-                    if(loadedAnswers){
-                        that.set('content', loadedAnswers);
-                    }
-                });
-
-            } else {
-                // TODO: Proper feedback
-                alert('Niet alle belangrijke velden zijn ingevoerd');
-            }
+            var specialSearchFormData = this.getInput('.naturalLanguageForm .inputKeyword');
+            this.searchAnswers(specialSearchFormData);
         },
 
         regularSearchAnswers: function(){
-            var formData = this.getProperties('regularSearch');
-            this.keywordsArray = formData.regularSearch.split(' ');
-
-            if(this.formIsComplete()){
-                var relevantAnswers =  App.Answer.findRelevantAnswers(this.keywordsArray);
-                var that = this;
-
-                relevantAnswers.then(function(loadedAnswers){
-                    if(loadedAnswers){
-                        that.set('content', loadedAnswers);
-                    }
-                });
-
-            } else {
-                // TODO: Proper feedback
-                alert('Niet alle belangrijke velden zijn ingevoerd');
-            }
+            var regularSearchFormData = this.getInput('.normalForm .regularSearch');
+            this.searchAnswers(regularSearchFormData);
         },
 
         switchSearchBar: function(searchBarToSwitchTo){
@@ -59,10 +29,76 @@ App.SearchController = Ember.ArrayController.extend({
             }
 
         }
+
+    },
+
+    init: function(){
+        this.set('suggestions', this.store.findAll('answer'));
     },
 
     /* Custom functions */
-    formIsComplete: function(){
+    getInput: function(selector){
+        var inputArray = [];
+
+        $(selector).each(function(){
+            var value = $(this).val();
+
+            if(value){
+                inputArray.push(value);
+            }
+        });
+
+        return inputArray;
+    },
+
+    setKeywordsArray: function(formData){
+        var keywordsArray = [];
+
+        for(var i = 0; i < formData.length; i++){
+            var formInput = formData[i];
+            var formInputWords = formInput.split(' ');
+
+            if(keywordsArray.indexOf(formInput) <= -1){
+                keywordsArray.push(formInput);
+            }
+
+            for(var j = 0; j < formInputWords.length; j++){
+                var formInputWord = formInputWords[j];
+
+                if(keywordsArray.indexOf(formInputWord) <= -1) {
+                    keywordsArray.push(formInputWord);
+                }
+            }
+        }
+
+        this.keywordsArray = keywordsArray;
+    },
+
+    searchAnswers: function(formData){
+        this.setKeywordsArray(formData);
+
+        if(this.formIsComplied()){
+            var relevantAnswers =  App.Answer.findRelevantAnswers(this.keywordsArray);
+            var that = this;
+
+            relevantAnswers.then(function(loadedAnswers){
+                // TODO: Animatie tonen (en verbergen) zoekresultaten
+                if(loadedAnswers){
+                    that.set('searchResults', loadedAnswers);
+
+                } else {
+                    that.set('searchResults', false);
+                }
+            });
+
+        } else {
+            // TODO: Proper feedback
+            //alert('Niet alle belangrijke velden zijn ingevoerd');
+        }
+    },
+
+    formIsComplied: function(){
+        // TODO: Fix zodat deze ingevuld kan worden met minstens een ingevuld veld IPV alle velden
         for(var input_key in this.keywordsArray){
             if(this.keywordsArray.hasOwnProperty(input_key) && !this.keywordsArray[input_key]){
                 return false;
@@ -70,58 +106,5 @@ App.SearchController = Ember.ArrayController.extend({
         }
 
         return true;
-    },
-
-    findRelevantAnswers: function(formData){
-        var answers = this.get('model');
-        var relevantAnswers = [];
-
-        answers.forEach(function(item){
-            console.log('ITEM: ' + item);
-        });
-
-        if(answers.hasOwnProperty('content')){
-
-            for(var i = 0; i < answers.content.length; i++){
-                var answer = answers.content[i];
-                var answerKeywords = answer.get('keywordsArray');
-
-                var answerKeywordIntersection = answerKeywords.filter(function(n) {
-                    return formData.indexOf(n) != -1;
-                });
-                var answerRelevancy = answerKeywordIntersection.length;
-
-                if(answerRelevancy > 0){
-                    relevantAnswers.push({
-                        answer: answer,
-                        relevancy: answerRelevancy
-                    });
-                }
-            }
-
-            return this.sortAnswers(relevantAnswers);
-        }
-
-        return false;
-    },
-
-    sortAnswers: function(answers){
-        var sortedAnswers = answers.sort(function(a, b){
-            return b.relevancy - a.relevancy;
-        });
-
-        return this.formatAnswers(sortedAnswers);
-    },
-
-    formatAnswers: function(answers){
-        var formattedAnswers = [];
-
-        // Because we already sorted the array we can simply remove the relevancy of the answer, and push the actual answers to a new array
-        for(var answer_key in answers){
-            if(answers.hasOwnProperty(answer_key)){
-                formattedAnswers.push(answers[answer_key].answer);
-            }
-        }
-        return formattedAnswers;
     }
 });

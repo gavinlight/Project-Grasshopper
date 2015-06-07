@@ -7,7 +7,7 @@ module.exports = function(grunt){
                 options: {
                     livereload: true
                 },
-                files: 'public/app/views/**/*.hbs',
+                files: 'public/app/templates/**/*.hbs',
                 tasks: ['emberTemplates']
             }
         },
@@ -18,12 +18,12 @@ module.exports = function(grunt){
                     templateCompilerPath: 'public/vendor/ember/ember-template-compiler.js',
                     handlebarsPath: 'public/vendor/handlebars/handlebars.js',
                     templateName: function(name) {
-                        var routePath = 'public/app/views/';
+                        var templatesPath = 'public/app/templates/';
 
                         if(name.indexOf('partials') > -1){
-                            return name.replace(routePath + 'partials/', '');
+                            return name.replace(templatesPath + 'partials/', '');
                         } else {
-                            return name.replace(routePath, '');
+                            return name.replace(templatesPath, '');
                         }
                     },
                     preprocess: function(source) {
@@ -31,7 +31,7 @@ module.exports = function(grunt){
                     }
                 },
 				files: {
-					"public/app/views/compiled_view.js": "public/app/views/**/*.hbs"
+					"public/app/templates/compiled_template.js": "public/app/templates/**/*.hbs"
 				}
 			}
 		}

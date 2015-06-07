@@ -1,0 +1,9 @@
+<div class="card">
+    <h1>{{answer.titleSummary}}</h1>
+
+    <div class="content">
+        {{{answer.contentSummary}}}
+    </div>
+
+    {{#link-to 'answers.show' answer.id answer.slug}}<span>Meer</span>{{/link-to}}
+</div>
