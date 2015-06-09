@@ -33,5 +33,14 @@ App.ApplicationController = Ember.Controller.extend({
 
     showSimilarAnswers: function(){
         return this.get('currentPath') === 'answers.show';
-    }.property('currentPath')
+    }.property('currentPath'),
+
+    insertDialog: function(content){
+        this.removeDialogs();
+        $('<div class="dialogWindow">' + content + ' <span class="closeDialog">X</span></div>').appendTo('body').fadeIn(500);
+    },
+
+    removeDialogs: function(){
+        $('.dialogWindow').remove();
+    }
 });

@@ -10,7 +10,7 @@
             <div class="eight columns pages">
                 <ul>
                     <li>{{#link-to 'search'}}Zoeken{{/link-to}}</li>
-                    <!-- TODO: Stuur de gebruiker bij het bezoeken van deze pagina (via de footer) naar de inlog pagina -->
+
                     {{#if controllers.application.userIsLoggedIn}}
                         <li>{{#link-to 'results'}}Mijn resultaten{{/link-to}}</li>
                     {{/if}}

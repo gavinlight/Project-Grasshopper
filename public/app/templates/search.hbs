@@ -65,7 +65,7 @@
 
 </section>
 
-<section class="searchResults container toTop">
+<section class="searchResults results container toTop">
 
     {{#if searchResults}}
 
@@ -73,11 +73,16 @@
         <h1 class="listHeader">Zoekresultaten</h1>
 
         <ul class="results-list">
-            {{#each answer in searchResults}}
 
-                <li>{{ partial "answer" }}</li>
+            {{#if searchResults.length}}
 
-            {{/each}}
+                {{#each answer in searchResults}}
+
+                    <li>{{ partial "answer" }}</li>
+
+                {{/each}}
+
+            {{/if}}
 
             {{#unless controllers.application.userIsLoggedIn}}
                 <li>

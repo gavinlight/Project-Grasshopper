@@ -5,6 +5,7 @@ body {
     font-family: "Roboto", Helvetica, Arial, sans-serif;
     background-color: #f5f5f5;
     color: #737373;
+    position: relative;
 }
 
 body, html, .ember-view, .fullScreen {
@@ -185,6 +186,16 @@ input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focu
     color: white;
 }
 
+#menu a.login.logout {
+    background-color: transparent;
+    color: #71D0D6;
+}
+
+#menu a.login.logout:hover {
+    background-color: #71D0D6;
+    color: white;
+}
+
 #menu .hamburger {
     width: 20px;
     height: 20px;
@@ -223,17 +234,6 @@ input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focu
     display: inline;
 }
 
-#menu .mobile-menu ul li a.login.logout {
-    background-color: transparent;
-    color: #71D0D6;
-}
-
-#menu .mobile-menu ul li a.login.logout:hover {
-    background-color: #71D0D6;
-    color: white;
-}
-
-
 #menu .mobile-menu ul li:last-of-type {
     margin-bottom: 0;
 }
@@ -250,13 +250,13 @@ input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focu
     text-decoration: none;
 }
 
-@media (min-width: 768px){
+@media (min-width: 805px){
     #menu .mobile-menu {
         display: none !important;
     }
 }
 
-@media (max-width: 768px){
+@media (max-width: 805px){
     #menu .brand {
         width: 95%;
         float: none;
@@ -348,7 +348,7 @@ input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focu
     border-bottom-width: 2px;
 }
 
-@media (max-width: 900px){
+@media (max-width: 950px){
     #menu a {
         margin-right: 10px;
     }
@@ -558,6 +558,10 @@ input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focu
 
 #searchForm form.normalForm button {
     margin-top: 20px;
+}
+
+.searchResults.results {
+    display: none;
 }
 
 .searchResults ul {
@@ -856,12 +860,7 @@ section.answer > .source > p, section.answer > .content > p {
 
 #footer > .footer-icon-container {
     display: inline-block;
-    padding: 20px;
-    border-radius: 50%;
-    background-color: white;
-    width: 75px;
-    height: 75px;
-    margin-top: -30px;
+    margin-top: -40px;
 }
 
 #footer > .footer-links {
@@ -900,10 +899,6 @@ section.answer > .source > p, section.answer > .content > p {
 }
 
 /* Overlay */
-body {
-    position: relative;
-}
-
 body.overlay:after {
     content: '';
     display: block;
@@ -948,6 +943,7 @@ body.overlay #searchForm .inputWrapper .recommendationsPopUp:before {
     border: 2px solid #6FBABE;
     color: white;
     padding: 5px 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
 
 .dialogWindow > .closeDialog {

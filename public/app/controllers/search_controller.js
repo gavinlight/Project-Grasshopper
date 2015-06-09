@@ -82,29 +82,51 @@ App.SearchController = Ember.Controller.extend({
             var that = this;
 
             relevantAnswers.then(function(loadedAnswers){
-                // TODO: Animatie tonen (en verbergen) zoekresultaten
+
+                that.hideSearchResults();
+
                 if(loadedAnswers){
                     that.set('searchResults', loadedAnswers);
-                    $('body').append('<div class="dialogWindow">Er is/zijn ' + loadedAnswers.length + ' resulat(en) gevonden <span class="closeDialog">X</span></div>');
+                    that.insertSearchResultsDialog(loadedAnswers.length);
                 } else {
-                    that.set('searchResults', false);
+                    that.set('searchResults', true);
+                    that.insertSearchResultsDialog(0);
                 }
+
+                that.showSearchResults();
+
             });
 
         } else {
-            // TODO: Proper feedback
-            //alert('Niet alle belangrijke velden zijn ingevoerd');
+            this.hideSearchResults();
+            this.set('searchResults', false);
+            this.get('controllers.application').insertDialog('Niet alle velden zijn ingevoerd');
+        }
+    },
+
+    hideSearchResults: function(){
+        $('.searchResults.results').fadeOut(500);
+    },
+
+    showSearchResults: function(){
+        $('.searchResults.results').fadeIn(500);
+    },
+
+    insertSearchResultsDialog: function(searchResultsAmount){
+        if(Number(parseFloat(searchResultsAmount)) === searchResultsAmount){
+
+            var extraSearchResultsAmount = 2;
+
+            if(this.get('controllers.application.userIsLoggedIn')){
+                extraSearchResultsAmount = 1;
+            }
+
+            this.get('controllers.application').insertDialog('Er is/zijn ' + (searchResultsAmount + extraSearchResultsAmount) + ' resulat(en) gevonden');
+
         }
     },
 
     formIsComplied: function(){
-        // TODO: Fix zodat deze ingevuld kan worden met minstens een ingevuld veld IPV alle velden
-        for(var input_key in this.keywordsArray){
-            if(this.keywordsArray.hasOwnProperty(input_key) && !this.keywordsArray[input_key]){
-                return false;
-            }
-        }
-
-        return true;
+        return this.keywordsArray.length >= 1;
     }
 });

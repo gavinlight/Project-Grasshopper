@@ -36,6 +36,11 @@ App.SearchRoute = Ember.Route.extend(App.ResetScroll);
 App.LoginRoute = Ember.Route.extend(App.ResetScroll);
 
 App.ResultsRoute = Ember.Route.extend(App.ResetScroll, {
+    beforeModel: function(){
+        if(!this.controllerFor('application').get('userIsLoggedIn')){
+            this.transitionTo('search');
+        }
+    },
     model: function(){
         return Ember.RSVP.hash({
             suggestions: this.store.findAll('answer')
